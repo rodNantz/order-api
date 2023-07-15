@@ -22,13 +22,6 @@ class OrderApiApplicationTests {
 	void contextLoads() {
 	}
 
-	@Test
-	void testAddUserItemOrderThenStock(){
-		User user = new User(1, "João", "bamob26174@iturchia.com");
-		Item item = new Item(1, "Apple");
-		Order order = new Order(1, item, 3, user);
-		StockMovement stockMove = new StockMovement(1, 20230701, item, 2);
 
-	}
 
 }

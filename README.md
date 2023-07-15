@@ -1,26 +1,43 @@
-# Read Me
+# Read Me - Order API - SIBS Test
 
-How to run this project:
+## How to run this project:
 
-* execute 
+* Have PostgreSQL installed and create a database:
+`CREATE DATABASE order_db;`
 
-# Getting Started
+* In application.properties file, fill the values for the properties below, according to your setup:
+`spring.datasource.username=postgres 
+ spring.datasource.password=yourpassword
+ spring.mail.username=preferably@gmail.com
+ spring.mail.password=yourpwd
+`
 
-### Reference Documentation
-For further reference, please consider the following sections:
+* Other `spring.mail` setup may need adjustments if using other mail clients.
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.1.1/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.1.1/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/3.1.1/reference/htmlsingle/#web)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.1.1/reference/htmlsingle/#data.sql.jpa-and-spring-data)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.1.1/reference/htmlsingle/#using.devtools)
+* `spring.jpa.hibernate.ddl-auto` is configured as UPDATE, so data will be preserved between executions.
 
-### Guides
-The following guides illustrate how to use some features concretely:
+* Run OrderApplication (from IDE or using Maven):
+`mvnw spring-boot:run`
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+## API Endpoints
 
+#### Base Url: `http://localhost:8080/api`
+
+A Postman collection inside the project is provided with some call examples:
+
+`sibs-test-api.postman_collection.json`
+
+### /items, /users : 
+Default CRUD functionality provided by Spring Data Rest.
+
+### /orders 
+All CRUD common methods.
+POST/PUT methods will add an Order to the system, automatically completed if there is stock of that item (`quantity` will be returned updated).
+
+### /stocks
+All CRUD common functionalities.
+POST/PUT methods will add an Stock to the system, automatically completing an Order if the stock is enough (`quantity` of the stock will be returned decreased when an Order is found).
+
+## Logging
+
+One directory above the project, will be generated a `sibs-test-logs` directory with the log file.
