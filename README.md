@@ -6,11 +6,12 @@
 `CREATE DATABASE order_db;`
 
 * In application.properties file, fill the values for the properties below, according to your setup:
-`spring.datasource.username=postgres 
- spring.datasource.password=yourpassword
- spring.mail.username=preferably@gmail.com
- spring.mail.password=yourpwd
-`
+```
+spring.datasource.username=postgres
+spring.datasource.password=yourpassword
+spring.mail.username=preferably@gmail.com
+spring.mail.password=yourpwd
+```
 
 * Other `spring.mail` setup may need adjustments if using other mail clients.
 
